@@ -1,0 +1,21 @@
+<html>
+
+<body>
+    <h1>southern-co power monitor</h1>
+	<p id='server-time'></p>
+	<canvas id="myChart"></canvas>
+	<script src="./node_modules/chart.js/dist/Chart.js" ></script>
+    <script src="main.js"></script>
+	<script>
+		var HOST = location.origin.replace(/^http/, 'ws')
+		var ws = new WebSocket(HOST);
+		var el = document.getElementById('server-time');
+		ws.onmessage = function(event) {
+			el.innerHTML = 'Server time: ' + event.data;
+		};
+
+
+	</script>
+</body>
+
+</html>
