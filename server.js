@@ -16,12 +16,9 @@ const app = express();
 //express routing
 app.get('/',(req,res) => res.sendFile(INDEX));
 app.get('/main.js', (req,res) => res.sendFile(path.join(__dirname, "main.js")));
-app.get('/month', (req,res) => SouthernCompany.getMonthlyData().catch(console.error)
-.then((data,res,req) =>{
-    res.send.bind(data);
-}));
- // res.send(SouthernCompany.getMonthlyData().catch(console.error())));
-//include node_modules scripts
+app.get('/month', (req,res) => SouthernCompany.getMonthlyData()
+    .then((data)=> res.send(data)).catch(console.error));
+
 app.use('/node_modules',express.static(path.join(__dirname,'node_modules')));
 app.use((err,req,res)=>{console.log('Err:'+err)})
 
