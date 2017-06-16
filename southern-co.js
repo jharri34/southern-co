@@ -1,7 +1,7 @@
 const api = require('southern-company-api');
 const config = require('./config.json');
 const SouthernCompany =  new api({username:config.username, password:config.password});
-SouthernCompany.on('login', ()=>{
+SouthernCompany.on('connected', ()=>{
   console.info('Logged In...');
 
   /* Displaying accounts found */

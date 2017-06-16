@@ -26,6 +26,11 @@ wss.on('connection', (ws,req) => {
 
 	ws.on('close', () => console.log('Client disconnected'));
 });
+setInterval(() => {
+    wss.clients.forEach((client) => {
+        client.send(new Date().toTimeString());
+    });
+}, 1000);
 
 server.listen(PORT,()=>{
      console.log('Listening on %d', server.address().port);
